@@ -14,6 +14,13 @@ app.get("/",(req,res)=>{
     }
 })
 
+// imports
+// import "./utils/dbConnect.js"
+import router from "./controllers/user.js"
+
+
+app.use("/users",router)
+
 app.listen(PORT,()=>{
     console.log(`Server is up and running on http://localhost:${PORT}`);
 })
