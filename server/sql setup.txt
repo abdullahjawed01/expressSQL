@@ -1,0 +1,74 @@
+
+
+
+   1) SQL vs MongoDB (Mental Model First)
+
+   MongoDB                      SQL
+   Databse                      Databse
+   Collection                   table
+   Document                     Row
+   Fields                       Column
+   _id                          Primary key
+   Schema less                  Schema based 
+   lookup                       join 
+
+
+    2) Popular SQL Databse 
+       DB.                    Use Case 
+    My SQL                      Most common,fast,simple 
+    PostgreSQL                  Advanced,enterprise,JSON support 
+    SQLlite                     Local/testing 
+    Marial DB                   MySQL alternative  
+
+We'll. assume MySQL (same logic applies to Postgre). 
+
+
+
+3) Installing & setting Up MySQL 
+
+Ubuntu- 
+sudo apt update 
+sudo apt install mysql-server 
+
+check-
+mysql --version  
+
+Login 
+sudo mysql 
+
+Create user (recommended)
+CREATE USER 'Abdullah'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'Abdullah'@'localhost';
+FLUSH PRIVILEGES; 
+
+to exit:
+ctrl+d 
+
+
+
+4) Core SQL concepts(very important)\
+
+
+
+Databses 
+CREATE DATABASE app_db;
+use
+
+
+
+Commands
+1)(SHOW DATABASES;):=> command to fetch databases 
+2)CREATE DATABASE zomato;=> command to creat a DB 
+3) USE DB_Name; => command to use DB 
+4) SELECT DATABASE();=> command to select DB or get in BD 
+5) DROP DATABASE DB_name; => command to delete DB
+6)CREATE TABLE users(
+    id INT,
+    name VARCHAR(40),
+    email VARCHAR(50)
+    ); => command to create Collection 
+7) SHOW TABLES;=> command to show tables 
+8)SELECT * FROM users;=> command to select tables
+9) INSERT INTO users VALUES (1,"Suhail","suhail@gmail.com"); => command to insert values into tables 
+10)UPDATE users SET name = "malik" WHERE  id = 2; => command to update values into tables 
+11)DELETE FROM users WHERE id = 2; => command to delete values from tables; 

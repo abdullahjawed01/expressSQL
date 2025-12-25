@@ -1,0 +1,248 @@
+What is SQL?(Core theory)
+SQL= Structure Query language
+SQL is:
+   -A language
+   -Used to store, read ,update, delete
+   -Data stored in relational database
+SQL is not a database
+MySQL/PostgreSQL/Oracle are databases that understand SQL 
+
+
+Relational database - What does it mean?
+
+A relational database store data in:
+ - Tables
+ - Connected via relationships
+
+Example 
+instead of one big json:
+
+{
+    "user":{
+        "name":"Suhail",
+        "orders":{...}
+    }
+}
+
+
+SQL does:
+ -One Table for user
+ - One table for orders
+ -Linked using keys
+
+The avoids: duplication inconsistency messy updates 
+
+Core Building Blocks
+1)database
+Top:level container
+
+server
+  |
+  --- database
+        |
+        ------Tables
+           |
+           -------- Rows
+                     |
+                     --------- Columns
+
+MongoDB equivalent:
+Cluster -> Databse -> Collection -> Document -> Fields 
+
+
+
+
+
+2) Table
+
+A table is:
+
+ - like an Excel Sheet 
+ - Has fixed Columns
+ - Each row follows same Structure
+
+Example
+
+ id  name.  email 
+ 1.  Suhail suahil@code.in 
+
+Unlike MongoDB , every row must match  schema 
+
+3) ROW(Record)
+
+ - one complete data entry 
+ - One real-world entity 
+
+4) Column (Fields)
+
+ - Defines what type of data 
+ - has data type
+ - has contraints 
+
+5) Data type(Theory)
+
+common SQL types:
+
+ Type                    Meaning 
+ INT.                    Number 
+ VARCHAR(n)              Text (limit length)
+ TEXT                    Long test 
+ BOOLEAN                 true/false
+ Date                    Date only 
+ TIMESTAMP               Date+time 
+ DECIMAL                 Money/precision 
+ ENUM                    Fixed Values 
+
+ SQl is strictly typed MongoDB is Flexible 
+
+
+KEYS (Very important theory)
+
+
+Primary KEY 
+  - uniquely identifies a row
+  - Cannot be NULL 
+  - Cannot repeat 
+
+         id  INT Primary KEY 
+
+    MongoDB equivalent:
+        _id 
+
+
+Foreign key 
+
+ - Connets Two table
+ - Enforces relationships 
+
+   orders.user_id -> users.id 
+
+This is what makes SQL: relational 
+
+   relationships types 
+
+
+    1) One-to-One 
+    User ↔ Profile
+        user.id → profile.user_id
+
+
+    2) One-to-Many(Most common)
+    user <-> orders 
+        users.id -> orders.user_id 
+
+    3)Many-to-Many 
+    students <-> Courses 
+     
+    Solving using junction table: 
+     
+        student_courses 
+        (student_id,course_id)
+
+
+contraints (data safety rules)
+
+Constraints protect your data
+
+Constraint	        Meaning
+
+NOT NULL	       Value required
+UNIQUE	           No duplicates
+DEFAULT	           Auto value
+CHECK	           Custom rule
+FOREIGN KEY	       Relationship enforcement
+
+
+Example: 
+email VARCHAR(100) UNIQUE NOT NULL 
+
+
+
+ACID properties (Why sql is trusted )
+
+sql databases follow ACID 
+    property     Meaning 
+    Atomicity   All or nothing 
+    Consistency rules always valid
+    Isolation   Transaction don't clash 
+    Durability  Dara never lost 
+
+This is why banking apps use SQL 
+MongoDB supports this partially, sql does it by design 
+
+
+
+
+Transaction(Theory)
+
+A Transaction = multiple steps treated as one unit 
+
+Example: 
+  1) Deduct Money 
+  2) add order 
+
+if step 2 fails -> step 1 is undone 
+
+
+    Begin 
+        step1 
+        step2 
+    Commit/Rollback 
+
+
+Normalization(Design Theory)
+
+Goal: 
+
+  - Avoid duplication
+  - avoids anomalies 
+
+bad Design 
+    users 
+    id | name | order1 | order2 | order3 
+
+Good design 
+ 
+    users 
+    orders 
+
+
+
+SQL architecture (How is works )
+
+ Client (Express / App)
+   ↓ SQL Query
+Query Parser
+   ↓
+Optimizer
+   ↓
+Execution Engine
+   ↓
+Storage Engine
+
+
+
+Important SQL teminology 
+Term	                Meaning
+
+Schema	                Structure of tables
+Index	                Faster search
+View                	Virtual table
+Stored Procedure	    Saved logic
+Trigger 	            Auto actions
+Migration           	Schema changes
+
+
+SQL Mindset shift (Fron MONGO)
+
+❌Embed everything ❌Flexible Structure 
+
+✅Think in relations ✅Think in joins.  ✅Design first,code later  
+
+✅ WHAT YOU SHOULD REMEMBER NOW
+
+SQL is structured & relational
+Tables are connected via keys
+Schema is strict
+Data integrity is core
+SQL shines in critical systems
